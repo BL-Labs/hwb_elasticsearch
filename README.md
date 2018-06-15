@@ -1,6 +1,6 @@
 # Humanities Workbench with Elasticsearch
 
-A Docker Compose stack that provides elasticsearch  and a Jupyter notebook (based on britishlibrarylabs/humanitiesworkbench) to load metadata into it and search it. It comes with a demonstration notebook which steps through getting some metadata (in this case, some information about books scanned by the Microsoft Books Project at the British Library), adding it to an elasticsearch index and then running some basic queries on it.
+A Docker Compose stack that provides elasticsearch and a Jupyter notebook (based on britishlibrarylabs/humanitiesworkbench) to load metadata into it and search it. It comes with a demonstration notebook which steps through getting some metadata (in this case, some information about books scanned by the Microsoft Books Project at the British Library), adding it to an elasticsearch index and then running some basic queries on it.
 
 ## Purpose
 
@@ -12,8 +12,15 @@ There is far more that can be done with elasticsearch, including being specific 
 
 First, you need to have docker and docker compose installed on whatever system you want to run this on. Then, the stack can be instantiated in the usual way:
 
-    $ docker compose up -d --build
+    # Note that you can skip the --build parameter after you've done this once.
+    $ docker-compose up -d --build
+
+	$ docker-compose down
 
 The jupyter notebook service is based on the Jupyter Docker Stack, and uses a token login. This token can be found in the docker logs when you start this service up. You can retrieve these on the commandline in the following way:
 
     $ docker logs frontend
+
+## Persistence
+
+The elasticsearch instance is configured to use a docker volume to store its data into. This should persist the data indexed and it is advised to map this volume to a known location on your system, or to suitable storage on your cloud service.
