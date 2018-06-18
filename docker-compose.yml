@@ -8,6 +8,9 @@ services:
     image: britishlibrarylabs/hwb_elasticsearch
     build: .
     
+    # Persist the work
+    volumes: 
+      - workspace:/workspace
     links:
       - elasticsearch
     
@@ -40,4 +43,5 @@ services:
 
 volumes: 
   esdata:
+  workspace:
 
