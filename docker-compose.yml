@@ -10,7 +10,7 @@ services:
     
     # Persist the work
     volumes: 
-      - workspace:/workspace
+      - workspace:/work
     links:
       - elasticsearch
     
